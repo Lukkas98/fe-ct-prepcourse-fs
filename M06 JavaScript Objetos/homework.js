@@ -68,11 +68,19 @@ function actualizarPassword(objetoUsuario, nuevaPassword) {
    // Tu código:
 }
 
+//-------------------------------------------------------------------------------
+
 function agregarAmigo(objetoUsuario, nuevoAmigo) {
    // El parámetro "objetoUsuario" tiene una propiedad llamada "amigos" igual a un arreglo.
    // Debes agregar el "nuevoAmigo" al final de este arreglo.
    // Retornar el objeto.
    // Tu código:
+   // objetoUsuario = {
+   //    amigos: ["Lucas", ""]
+   // }
+   objetoUsuario.amigos.push(nuevoAmigo);
+
+   return objetoUsuario;
 }
 
 function pasarUsuarioAPremium(objetoMuchosUsuarios) {
@@ -81,6 +89,17 @@ function pasarUsuarioAPremium(objetoMuchosUsuarios) {
    // Define esta propiedad de todos los usuarios como true.
    // Retornar el arreglo.
    // Tu código:
+   //objetoMuchosUsuarios = [{esPremium: false}, {esPremium: false}]
+   for(i = 0; i < objetoMuchosUsuarios.length; i++){
+      objetoMuchosUsuarios[i].esPremium = true;
+   }
+
+   // objetoMuchosUsuarios.forEach(usuario => {
+   //    usuario.esPremium = true;
+   // })
+
+
+   return objetoMuchosUsuarios;
 }
 
 function sumarLikesDeUsuario(objetoUsuario) {
@@ -89,6 +108,16 @@ function sumarLikesDeUsuario(objetoUsuario) {
    // Cada post posee una propiedad llamada "likes". Esta propiedad es un número.
    // Debes sumar los likes de todos los post y retornar el resultado.
    // Tu código:
+   // objetoUsuario = {
+   //    posts: [{likes: 9},{likes: 3},{likes: 1}]
+   // }
+
+   let sumaDeLikes = 0;
+
+   for (let i = 0; i < objetoUsuario.posts.length; i++) {
+      sumaDeLikes += objetoUsuario.posts[i].likes;
+   }
+   return sumaDeLikes;
 }
 
 function agregarMetodoCalculoDescuento(objetoProducto) {
@@ -102,7 +131,16 @@ function agregarMetodoCalculoDescuento(objetoProducto) {
    // PorcentajeDeDescuento ---> 0.2
    // Precio final ---> 8
    // Tu código:
+   //hay que retornar el objetoProducto
+   objetoProducto.calcularPrecioDescuento = function(){
+      let precio = objetoProducto.precio;
+      let porcentaje = objetoProducto.porcentajeDeDescuento;
+
+      return precio - precio * porcentaje;
+   }
+   return objetoProducto;
 }
+
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
 module.exports = {
